@@ -1,5 +1,5 @@
 # Mini-Projects
-![Tux, the Linux mascot](/assets/flyer)
+![Tux, the Linux mascot](/assets/flyer.png)
 > Code Craft
 >
 > > Link to Live Project:
