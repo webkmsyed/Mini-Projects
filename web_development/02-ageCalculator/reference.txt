@@ -1,0 +1,35 @@
+const form = document.querySelector('form');
+
+//This Use case will give empty value
+// const dob = parseInt(document.querySelector('#dob').value);
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+  const dayDOB = parseInt(document.querySelector('#dayDOB').value);
+  const monthDOB = parseInt(document.querySelector('#monthDOB').value);
+  const yearDOB = parseInt(document.querySelector('#yearDOB').value);
+  const dayToday = parseInt(document.querySelector('#dayToday').value);
+  const monthToday = parseInt(document.querySelector('#monthToday').value);
+  const yearToday = parseInt(document.querySelector('#yearToday').value);
+  const results = document.querySelector('#results');
+  if (dayDOB === '' || isNaN(dayDOB)) {
+    results.innerHTML == `please give a valid format of ${dayDOB}`;
+  } else if (monthDOB === '' || isNaN(monthDOB)) {
+    results.innerHTML = `Please give a valid weight ${monthDOB}`;
+  } else if (yearDOB === '' || isNaN(yearDOB)) {
+    results.innerHTML == `please give a valid format of ${yearDOB}`;
+  } else if (dayToday === '' || isNaN(dayToday)) {
+    results.innerHTML = `Please give a valid weight ${dayToday}`;
+  } else if (monthToday === '' || isNaN(monthToday)) {
+    results.innerHTML == `please give a valid format of ${monthToday}`;
+  } else if (yearToday === '' || isNaN(yearToday)) {
+    results.innerHTML = `Please give a valid weight ${yearToday}`;
+  } else {
+    const day = Math.abs(dayToday - dayDOB);
+    const month = Math.abs(monthToday - monthDOB);
+    const year = Math.abs(yearToday - yearDOB);
+
+    //show the result
+    results.innerHTML = `<span>You are ${year} year ${month} month ${day} day old.</span>`;
+  }
+});
