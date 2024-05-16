@@ -3,5 +3,5 @@
 > Code Craft
 >
 > > Link to Live Project:
-> > <https://officialkmsyed.github.io/Mini-Projects/>
+> > <https://webkmsyed.github.io/Mini-Projects/>
 
