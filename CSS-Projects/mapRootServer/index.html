@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Root DNS Servers Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map { height: 600px; }
+        .red-circle {
+            background-color: red;
+            width: 10px;
+            height: 10px;
+            display: block;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+    </style>
+</head>
+<body>
+<h1>Khishamuddin Syed and Chai Code Server</h1>
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+    // Initialize the map
+    var map = L.map('map').setView([20, 0], 2); // Center of the map, initial zoom level 2
+
+    // Add OpenStreetMap tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Root DNS Server Locations
+    var dnsServers = [
+        { lat: 37.7749, lon: -122.4194, name: "A Root Server (8.8.8.8)" },
+        { lat: 52.3702, lon: 4.8952, name: "B Root Server (128.9.0.107)" },
+        { lat: 51.5074, lon: -0.1278, name: "C Root Server (192.33.4.12)" },
+        { lat: 40.7128, lon: -74.0060, name: "D Root Server (128.8.10.90)" },
+        { lat: 34.0522, lon: -118.2437, name: "E Root Server (192.203.230.10)" },
+        { lat: 48.8566, lon: 2.3522, name: "F Root Server (192.5.5.241)" },
+        { lat: 55.7558, lon: 37.6173, name: "G Root Server (192.112.36.4)" },
+        { lat: 39.9042, lon: 116.4074, name: "H Root Server (128.63.2.53)" },
+        { lat: 41.8781, lon: -87.6298, name: "I Root Server (192.36.148.17)" },
+        { lat: -33.8688, lon: 151.2093, name: "J Root Server (192.58.128.30)" },
+        { lat: 35.6762, lon: 139.6503, name: "K Root Server (193.0.14.129)" },
+        { lat: -34.6037, lon: -58.3816, name: "L Root Server (199.7.83.42)" },
+        { lat: 60.1699, lon: 24.9384, name: "M Root Server (202.12.27.33)" },
+        { lat: 19.8758, lon: 75.3393, name: "Chai Code and Khishamuddin Server" }
+    ];
+
+    // Add markers for the DNS servers
+    dnsServers.forEach(function(server, index) {
+        if (server.name.includes("Khishamuddin")) {
+            // Highlight the Khishamuddin server with a red circle
+            L.circleMarker([server.lat, server.lon], {
+                color: "red",
+                radius: 10
+            })
+            .addTo(map)
+            .bindTooltip(server.name, { permanent: true, direction: "right" }).openTooltip();
+        } else {
+            // Add markers for other servers with unique colors
+            L.circleMarker([server.lat, server.lon], {
+                color: "blue",
+                radius: 8
+            })
+            .addTo(map)
+            .bindTooltip(server.name, { permanent: true, direction: "right" }).openTooltip();
+        }
+    });
+</script>
+
+</body>
+</html>
